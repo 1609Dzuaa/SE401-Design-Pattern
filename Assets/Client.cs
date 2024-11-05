@@ -5,13 +5,12 @@ using UnityEngine;
 //Client sử dụng Flyweight
 public class Client : MonoBehaviour
 {
-    private EnemyFlyweightFactory enemyFactory;
+    [SerializeField] EnemyFlyweightFactory enemyFactory;
     [SerializeField] int _numsOfEnemy;
     [SerializeField] Enemy _enemyPrefab;
 
     void Start()
     {
-        enemyFactory = new EnemyFlyweightFactory();
         //Instantiate clone 1 gameobject có sẵn và trả về cái clone đó
 
         //Crete n enemyA
@@ -19,7 +18,7 @@ public class Client : MonoBehaviour
         {
             Enemy enemy = Instantiate(_enemyPrefab);
             enemy.Init(enemyFactory.GetFlyweight("EnemyA"));
-            //enemy.Init("EnemyA", 100, 10, 1.5f);
+            //enemy.Init("EnemyA", 5, 10, 15f);
         }
 
         //Crete n enemyB
@@ -27,7 +26,7 @@ public class Client : MonoBehaviour
         {
             Enemy enemy = Instantiate(_enemyPrefab);
             enemy.Init(enemyFactory.GetFlyweight("EnemyB"));
-            //enemy.Init("EnemyB", 200, 20, 1.2f);
+            //enemy.Init("EnemyB", 4, 8, 12f);
         }
 
         //Crete n enemyC
@@ -35,7 +34,7 @@ public class Client : MonoBehaviour
         {
             Enemy enemy = Instantiate(_enemyPrefab);
             enemy.Init(enemyFactory.GetFlyweight("EnemyC"));
-            //enemy.Init("EnemyC", 300, 30, 0.8f);
+            //enemy.Init("EnemyC", 3, 6, 9f);
         }
     }
 }

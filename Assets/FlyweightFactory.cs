@@ -1,27 +1,29 @@
 ﻿using System.Collections.Generic;
+using DemoFlyweightPattern;
+using UnityEngine;
 
 //Quản lý và cung cấp các flyweight
-public class EnemyFlyweightFactory
+public class EnemyFlyweightFactory : MonoBehaviour
 {
+    [SerializeField] EnemyData[] _enemyDatas;
     private Dictionary<string, EnemyFlyweight> flyweights = new Dictionary<string, EnemyFlyweight>();
+
+    private void Awake()
+    {
+        foreach (var data in _enemyDatas)
+            if (!flyweights.ContainsKey(data.EnemyName))
+                flyweights.Add(data.EnemyName, data.Flyweight);
+    }
 
     public EnemyFlyweight GetFlyweight(string type)
     {
-        if (!flyweights.ContainsKey(type))
-        {
-            switch (type)
-            {
-                case "EnemyA":
-                    flyweights[type] = new EnemyFlyweight("EnemyA", 100, 10, 1.5f);
-                    break;
-                case "EnemyB":
-                    flyweights[type] = new EnemyFlyweight("EnemyB", 200, 20, 1.2f);
-                    break;
-                case "EnemyC":
-                    flyweights[type] = new EnemyFlyweight("EnemyC", 300, 30, 0.8f);
-                    break;
-            }
-        }
         return flyweights[type];
     }
+}
+
+[System.Serializable]
+public class EnemyData
+{
+    public string EnemyName;
+    public EnemyFlyweight Flyweight;
 }

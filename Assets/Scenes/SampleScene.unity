@@ -167,7 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692dc92bfabbed34182ae93313210423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _numsOfEnemy: 500
+  enemyFactory: {fileID: 2068784830}
+  _numsOfEnemy: 5000
   _enemyPrefab: {fileID: 1570197352}
 --- !u!1 &519420028
 GameObject:
@@ -261,37 +262,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1313052211
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1313052212}
-  m_Layer: 0
-  m_Name: Flyweight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1313052212
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1313052211}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1570197350
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,7 +273,7 @@ GameObject:
   - component: {fileID: 1570197351}
   - component: {fileID: 1570197352}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -336,6 +306,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de2536c9d76629349a144eaaa80af869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Flyweight: {fileID: 0}
+--- !u!1 &2068784828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2068784829}
+  - component: {fileID: 2068784830}
+  m_Layer: 0
+  m_Name: FlyweightFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2068784829
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068784828}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2068784830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068784828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320bdf5df072e064f9572388cb536d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyDatas:
+  - EnemyName: EnemyA
+    Flyweight: {fileID: 11400000, guid: 330f9feb87d445045aa72922416fd454, type: 2}
+  - EnemyName: EnemyB
+    Flyweight: {fileID: 11400000, guid: 129665803f9673d49a58b4643874ef02, type: 2}
+  - EnemyName: EnemyC
+    Flyweight: {fileID: 11400000, guid: 87cf12ee36ccd4a4d85c64d9a7c1cc9a, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -343,4 +365,4 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 92732811}
   - {fileID: 1570197351}
-  - {fileID: 1313052212}
+  - {fileID: 2068784829}

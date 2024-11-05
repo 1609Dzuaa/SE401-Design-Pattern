@@ -2,19 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Flyweight chứa các thuộc tính chung
-public class EnemyFlyweight
+namespace DemoFlyweightPattern
 {
-    public string Name;
-    public int Health;
-    public int Damage;
-    public float MoveSpeed;
-
-    public EnemyFlyweight(string name, int health, int damage, float moveSpeed)
+    [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/EnemyFlyweight", order = 1)]
+    //Flyweight chứa các thuộc tính chung
+    public class EnemyFlyweight : ScriptableObject
     {
-        Name = name;
-        Health = health;
-        Damage = damage;
-        MoveSpeed = moveSpeed;
+        public string Name;
+        public int Health;
+        public int Damage;
+        public float MoveSpeed;
     }
 }
